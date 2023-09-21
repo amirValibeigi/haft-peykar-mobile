@@ -1,0 +1,35 @@
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+  plugins: [
+    ['@babel/plugin-transform-flow-strip-types', {allowDeclareFields: true}],
+    'module:react-native-dotenv',
+    [
+      'module-resolver',
+      {
+        root: ['./src'],
+        alias: {
+          '@apis': './src/apis',
+          '@assets': './src/assets',
+          '@components': './src/views/components',
+          '@contexts': './src/contexts',
+          '@customs': './src/views/customs',
+          '@details': './src/views/details',
+          '@fragments': './src/views/fragments',
+          '@GlobalStyles': './src/GlobalStyles',
+          '@ServiceNames': './src/ServiceNames',
+          '@items': './src/views/items',
+          '@libs': './src/libs',
+          '@locales': './src/locales',
+          '@hooks': './src/hooks',
+          '@models': './src/models',
+          '@pages': './src/views/pages',
+          '@routes': './src/views/routes',
+          '@repositories': './src/repositories',
+          '@Database': './src/databases/Database',
+          '@queries': './src/databases/queries',
+          '@tables': './src/databases/tables',
+        },
+      },
+    ],
+  ],
+};

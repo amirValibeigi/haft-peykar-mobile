@@ -1,0 +1,78 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@apis/*": [
+        "./src/apis/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@components/*": [
+        "./src/views/components/*"
+      ],
+      "@config": [
+        "./src/Config"
+      ],
+      "@contexts/*": [
+        "./src/contexts/*"
+      ],
+      "@customs/*": [
+        "./src/views/customs/*"
+      ],
+      "@Database": [
+        "./src/databases/Database"
+      ],
+      "@details/*": [
+        "./src/views/details/*"
+      ],
+      "@env": [
+        "./env"
+      ],
+      "@fragments/*": [
+        "./src/views/fragments/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@GlobalStyles": [
+        "./src/GlobalStyles"
+      ],
+      "@ServiceNames": [
+        "./src/ServiceNames"
+      ],
+      "@items/*": [
+        "./src/views/items/*"
+      ],
+      "@libs/*": [
+        "./src/libs/*"
+      ],
+      "@locales/*": [
+        "./src/locales/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@pages/*": [
+        "./src/views/pages/*"
+      ],
+      "@routes/*": [
+        "./src/views/routes/*"
+      ],
+      "@queries/*": [
+        "./src/databases/queries/*"
+      ],
+      "@repositories/*": [
+        "./src/repositories/*"
+      ],
+      "@tables/*": [
+        "./src/databases/tables/*"
+      ],
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ]
+  }
+}

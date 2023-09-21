@@ -1,0 +1,21 @@
+{
+  "about_us": "درباره ما",
+  "activity": "فعالیت",
+  "back": "بازگشت",
+  "close": "بستن",
+  "complete": "انجام شد",
+  "edit": "ویرایش",
+  "error": {
+    "request_permission_denied": "دسترسی {0} را رد کرده اید.",
+    "try_again": "خطای سایت: مجددا اقدام فرمایید.",
+    "validation": {}
+  },
+  "exit": "خروج",
+  "exit_confirm": "برای خروج مجددا اقدام فرمایید.",
+  "name_app": "هفت پیکر",
+  "next_version": "این بخش در نسخه بعدی فعال می گردد.",
+  "not_found_content": "محتوایی برای نمایش وجود ندارد.",
+  "search": "جستجو",
+  "submit": "ثبت",
+  "welcome": "خوش آمدید"
+}

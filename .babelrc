@@ -1,0 +1,19 @@
+{
+    "plugins": [
+        [
+            "module:react-native-dotenv"
+        ]
+    ],
+    "env": {
+        "test": {
+            "plugins": [
+                [
+                    "module:react-native-dotenv",
+                    {
+                        "path": ".env.development"
+                    }
+                ]
+            ]
+        }
+    }
+}

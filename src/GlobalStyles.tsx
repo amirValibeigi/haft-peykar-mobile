@@ -2,41 +2,14 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 export type Colors = {
   black4C4C: string;
-  black4C4C11: string;
   black4C4C33: string;
   blackE2E2: string;
-  blue33A5: string;
-  blueDark: string;
-  blueDark1: string;
-  blueDark2: string;
-  blueDark3: string;
-  blueGray: string;
   blueGrayDark: string;
-  blueGrayDark2: string;
-  blueGrayDark3: string;
-  blueGrayLight: string;
   blueLight1: string;
-  blueLight2: string;
-  blueLight3: string;
-  blueLight4: string;
-  deepPurple: string;
-  gold: string;
-  gold1: string;
-  gold2: string;
   gray: string;
-  gray4445: string;
-  gray6363: string;
-  grayA4A4: string;
-  green: string;
-  green1: string;
-  greenDark: string;
-  greenLight: string;
   pinkEC49: string;
   primary: string;
   primaryDark: string;
-  purple: string;
-  redDD63: string;
-  redF549: string;
   transparent: string;
   whiteEAEA: string;
   whiteEEEE: string;
@@ -45,41 +18,14 @@ export type Colors = {
 
 export const Colors: Colors = {
   black4C4C: '#4c4c4c',
-  black4C4C11: '#4c4c4c11',
   black4C4C33: '#4c4c4c33',
   blackE2E2: '#2e2e2e',
-  blue33A5: '#33A5CC',
-  blueDark: '#34A1D7',
-  blueDark1: '#34ACE0',
-  blueDark2: '#008D8C',
-  blueDark3: '#039291',
-  blueGray: '#4A819F',
-  blueGrayDark: '#022C43',
-  blueGrayDark2: '#34495E',
-  blueGrayDark3: '#115173',
-  blueGrayLight: '#BEC7CF',
+  blueGrayDark: '#1A212B',
   blueLight1: '#0EC1DC',
-  blueLight2: '#31E2DF',
-  blueLight3: '#00D8D6',
-  blueLight4: '#34E7E4',
-  deepPurple: '#4F44FF',
-  gold: '#FFDD00',
-  gold1: '#E4C600',
-  gold2: '#FFCE54',
   gray: '#c3c3c3',
-  gray4445: '#444547',
-  gray6363: '#636363',
-  grayA4A4: '#A4A4A4',
-  green: '#3DB39E',
-  green1: '#009688',
-  greenDark: '#408B86',
-  greenLight: '#26C281',
   pinkEC49: '#EC498A',
   primary: '#262777',
   primaryDark: '#212269',
-  purple: '#7733FF',
-  redDD63: '#dd636E',
-  redF549: '#F54949',
   transparent: '#00000000',
   whiteEAEA: '#eaeaea',
   whiteEEEE: '#EEEEEE',

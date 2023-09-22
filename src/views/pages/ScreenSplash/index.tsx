@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {BaseStackParamList} from '@routes/RootStackParamListType';
 
@@ -10,11 +10,15 @@ interface ScreenSplashPageType {
 const ScreenSplashPage = ({navigation}: ScreenSplashPageType) => {
   React.useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('homePage');
+      navigation.navigate('drawerRoute');
     }, 2000);
   }, [navigation]);
 
-  return <SafeAreaView></SafeAreaView>;
+  return (
+    <SafeAreaView>
+      <Text>Screen Splash</Text>
+    </SafeAreaView>
+  );
 };
 
 export default React.memo(ScreenSplashPage);

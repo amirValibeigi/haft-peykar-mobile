@@ -19,6 +19,7 @@ import {AppBarViewRefType} from '@customs/AppBarView/hook';
 import {onStackChange} from './StackConfigs';
 import {logV} from 'react-native-error-handling';
 import {ContainerLoadingView} from '@customs/LoadingView';
+import {BottomTabContextProvider} from '@contexts/BottomTabContext';
 
 I18nManager.allowRTL(false);
 
@@ -125,6 +126,8 @@ class IndexPage extends React.Component {
 
 export default React.memo(() => (
   <AppBarContextProvider>
-    <IndexPage />
+    <BottomTabContextProvider>
+      <IndexPage />
+    </BottomTabContextProvider>
   </AppBarContextProvider>
 ));

@@ -1,9 +1,15 @@
 {
   "about_us": "درباره ما",
   "activity": "فعالیت",
+  "articles": "مقالات",
   "back": "بازگشت",
+  "bookmark": "متن های برگزیده",
+  "castbox": "کست باکس",
   "close": "بستن",
+  "clubhouse": "کلاب هاوس",
   "complete": "انجام شد",
+  "dashboard": "پیشخوان",
+  "dictionary": "لغت نامه",
   "edit": "ویرایش",
   "error": {
     "request_permission_denied": "دسترسی {0} را رد کرده اید.",
@@ -12,10 +18,19 @@
   },
   "exit": "خروج",
   "exit_confirm": "برای خروج مجددا اقدام فرمایید.",
+  "gallery": "گالری",
+  "ganjor": "گنجور",
+  "instagram": "اینستاگرام",
+  "last_study": "آخرین مطالعه",
   "name_app": "هفت پیکر",
   "next_version": "این بخش در نسخه بعدی فعال می گردد.",
   "not_found_content": "محتوایی برای نمایش وجود ندارد.",
+  "podcast": "پادکست",
+  "science": "علوم فرهنگی",
   "search": "جستجو",
   "submit": "ثبت",
-  "welcome": "خوش آمدید"
+  "telegram": "تلگرام",
+  "welcome": "خوش آمدید",
+  "wikipedia_en": "wikipedia",
+  "wikipedia_fa": "ویکی پدیا"
 }

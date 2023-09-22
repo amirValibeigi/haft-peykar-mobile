@@ -30,7 +30,6 @@ export const styles = EStyle.create({
   },
   imageLogo: {
     ...GlobalStyles.mE8,
-    borderRadius: sizeImageLogo,
     height: sizeImageLogo,
     width: sizeImageLogo,
   },

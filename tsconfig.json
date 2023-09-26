@@ -3,17 +3,23 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@Database": [
+        "./src/databases/database"
+      ],
+      "@ServiceNames": [
+        "./src/service-names"
+      ],
       "@apis/*": [
         "./src/apis/*"
       ],
       "@assets/*": [
         "./src/assets/*"
       ],
+      "@colors": [
+        "./src/styles/colors"
+      ],
       "@components/*": [
         "./src/views/components/*"
-      ],
-      "@config": [
-        "./src/Config"
       ],
       "@contexts/*": [
         "./src/contexts/*"
@@ -21,11 +27,11 @@
       "@customs/*": [
         "./src/views/customs/*"
       ],
-      "@Database": [
-        "./src/databases/Database"
-      ],
       "@details/*": [
         "./src/views/details/*"
+      ],
+      "@devices": [
+        "./src/styles/devices"
       ],
       "@env": [
         "./env"
@@ -33,14 +39,11 @@
       "@fragments/*": [
         "./src/views/fragments/*"
       ],
+      "@gs": [
+        "./src/styles/global-styles"
+      ],
       "@hooks/*": [
         "./src/hooks/*"
-      ],
-      "@GlobalStyles": [
-        "./src/GlobalStyles"
-      ],
-      "@ServiceNames": [
-        "./src/ServiceNames"
       ],
       "@items/*": [
         "./src/views/items/*"
@@ -57,18 +60,21 @@
       "@pages/*": [
         "./src/views/pages/*"
       ],
-      "@routes/*": [
-        "./src/views/routes/*"
-      ],
       "@queries/*": [
         "./src/databases/queries/*"
       ],
       "@repositories/*": [
         "./src/repositories/*"
       ],
+      "@routes/*": [
+        "./src/views/routes/*"
+      ],
       "@tables/*": [
         "./src/databases/tables/*"
       ],
+      "@themes": [
+        "./src/styles/themes"
+      ]
     },
     "typeRoots": [
       "./node_modules/@types",

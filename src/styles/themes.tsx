@@ -4,7 +4,7 @@ import memoize from 'lodash.memoize';
 
 export const GlobalLightEStyles: EStyleSheet.AnyObject = {
   $color: Colors.blackE2E2,
-  $fontFamily: 'iranssans',
+  $fontFamily: 'iransans',
   $fontSize: 14,
   $textAlign: 'right',
 };

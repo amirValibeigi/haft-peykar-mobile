@@ -22,7 +22,6 @@ export const styles = EStyle.create({
   containerLogo: {
     ...GlobalStyles.mS8,
     ...GlobalStyles.row,
-    flex: 1,
   },
   icon: {
     ...GlobalStyles.mH4,

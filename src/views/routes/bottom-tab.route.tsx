@@ -20,19 +20,19 @@ const BottomTabRoute = () => {
       screenOptions={{headerShown: false}}
       tabBar={BottomTabComponent}>
       <BottomTab.Screen
-        name="podcastPage"
-        component={PodcastPage}
-        options={{
-          title: t('podcast'),
-          tabBarIcon: TabBarIcon.bind(this, SVG_Podcast),
-        }}
-      />
-      <BottomTab.Screen
         name="homePage"
         component={HomePage}
         options={{
           title: t('dashboard'),
           tabBarIcon: TabBarIcon.bind(this, SVG_Dashboard),
+        }}
+      />
+      <BottomTab.Screen
+        name="podcastPage"
+        component={PodcastPage}
+        options={{
+          title: t('podcast'),
+          tabBarIcon: TabBarIcon.bind(this, SVG_Podcast),
         }}
       />
       <BottomTab.Screen

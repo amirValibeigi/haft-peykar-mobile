@@ -4,16 +4,27 @@ import CategoryModel from '@models/category.model';
 import {styles} from './item.styles';
 
 export interface ItemAccess {
-  onPress?: (id: number, title: string) => void;
+  onPress?: (id: number) => void;
 }
 
 export const Item = React.memo(
-  ({item, onPress}: ListRenderItemInfo<CategoryModel> & ItemAccess) => {
+  ({item, index, onPress}: ListRenderItemInfo<CategoryModel> & ItemAccess) => {
+    const vStyles = React.useMemo(
+      () => ({
+        container: [
+          styles.container,
+          index % 2 !== 0 && styles.containerBottomSpace,
+        ],
+        title: [styles.title, index % 2 !== 0 && styles.titleLeft],
+      }),
+      [index],
+    );
+
     return (
       <TouchableOpacity
-        style={styles.container}
-        onPress={onPress?.bind(null, item.id ?? -1, item.title)}>
-        <Text style={styles.title}>{item.title}</Text>
+        style={vStyles.container}
+        onPress={onPress?.bind(null, item.id ?? -1)}>
+        <Text style={vStyles.title}>{item.title}</Text>
       </TouchableOpacity>
     );
   },

@@ -1,6 +1,7 @@
 export type BaseStackParamList = {
   drawerRoute: undefined;
   screenSplashPage: undefined;
+  versePage: {id?: number; title?: string};
 };
 
 export type BottomTabStackParamList = {

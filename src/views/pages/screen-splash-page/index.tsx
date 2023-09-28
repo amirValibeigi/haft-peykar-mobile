@@ -12,7 +12,7 @@ const ScreenSplashPage = ({navigation}: ScreenSplashPageType) => {
   React.useEffect(() => {
     setTimeout(() => {
       databaseConfig().then(() => {
-        navigation.navigate('drawerRoute');
+        navigation.replace('drawerRoute');
       });
     }, 2000);
   }, [navigation]);

@@ -65,10 +65,10 @@ export default EStyleSheet.create({
     shadowRadius: 1,
   },
   fontIranSans: {
-    fontFamily: 'iransansDn',
+    fontFamily: 'iransans',
   },
   fontIranSansBold: {
-    fontFamily: 'IRANSansMobileFaNum-Bold',
+    fontFamily: 'iransans_bold',
   },
   g12: {
     gap: 12,

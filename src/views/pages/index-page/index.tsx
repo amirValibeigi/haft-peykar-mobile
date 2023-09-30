@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   createNavigationContainerRef,
+  DrawerActions,
   NavigationContainer,
   NavigationContainerRefWithCurrent,
 } from '@react-navigation/native';
@@ -17,51 +18,57 @@ import {onStackChange} from './stack-configs';
 import {logV} from 'react-native-error-handling';
 import {ContainerLoadingView} from '@customs/loading-view';
 import {BottomTabContextProvider} from '@contexts/bottom-tab.context';
+import {getDrawerStatusFromState} from '@react-navigation/drawer';
 
 I18nManager.allowRTL(false);
 
 class IndexPage extends React.Component {
-  #appBar?: React.RefObject<AppBarViewRefType>;
-  #navigation?;
-  #timeout?: NodeJS.Timeout;
-  #isPressBack = false;
+  _appBar?: React.RefObject<AppBarViewRefType>;
+  _navigation?;
+  _timeout?: NodeJS.Timeout;
+  _isPressBack = false;
   _onPressBackAppBar;
   static contextType = AppBarContext;
-  #onStackChange;
+  _onStackChange;
 
   constructor(props: any) {
     super(props);
 
     setI18nConfig();
 
-    this._onPressBackAppBar = this.#onPressToNavigate.bind(this, -1);
+    this._onPressBackAppBar = this._onPressToNavigate.bind(this, -1);
 
-    this.#navigation = createNavigationContainerRef<AllParamList>();
+    this._navigation = createNavigationContainerRef<AllParamList>();
 
-    this.#appBar = React.createRef<AppBarViewRefType>();
+    this._appBar = React.createRef<AppBarViewRefType>();
 
-    this.#onStackChange = onStackChange.bind(this, {
-      appBar: this.#appBar,
+    this._onStackChange = onStackChange.bind(this, {
+      appBar: this._appBar,
       navigation: this
-        .#navigation as NavigationContainerRefWithCurrent<AllParamList>,
+        ._navigation as NavigationContainerRefWithCurrent<AllParamList>,
     });
 
     StatusBar.setHidden(true);
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.#onPressBack);
-    this.#appBar?.current?.setTitle(t('name_app'));
+    BackHandler.addEventListener('hardwareBackPress', this._onPressBack);
+    this._navigation?.addListener('state', this._onChangeState);
+    this._appBar?.current?.setTitle(t('name_app'));
   }
 
   render() {
     logV('render', 'indexPage');
     return (
       <View style={styles.container}>
-        <AppBarView ref={this.#appBar} onPressBack={this._onPressBackAppBar} />
+        <AppBarView
+          ref={this._appBar}
+          onPressBack={this._onPressBackAppBar}
+          onToggleDrawer={this._onToggleDrawer}
+        />
         <NavigationContainer
-          ref={this.#navigation}
-          onStateChange={this.#onStackChange}>
+          ref={this._navigation}
+          onStateChange={this._onStackChange}>
           <BaseStackRoute />
         </NavigationContainer>
         <Toast autoHide position="bottom" />
@@ -71,21 +78,23 @@ class IndexPage extends React.Component {
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.#onPressBack);
-    if (this.#timeout) {
-      clearTimeout(this.#timeout);
+    BackHandler.removeEventListener('hardwareBackPress', this._onPressBack);
+    this._navigation?.removeListener('state', this._onChangeState);
+
+    if (this._timeout) {
+      clearTimeout(this._timeout);
     }
   }
 
-  #onPressToNavigate = (name: string | number) => {
-    if (this.#navigation) {
+  _onPressToNavigate = (name: string | number) => {
+    if (this._navigation) {
       if (name === -1) {
-        this.#navigation.goBack();
+        this._navigation.goBack();
 
         return;
       }
 
-      this.#navigation.navigate(name as any);
+      this._navigation.navigate(name as any);
 
       return;
     }
@@ -93,11 +102,11 @@ class IndexPage extends React.Component {
     Toast.show({text1: 'error', text2: 'navigate', type: 'error'});
   };
 
-  #onPressBack = () => {
-    const {name} = this.#navigation?.getCurrentRoute() ?? {};
+  _onPressBack = () => {
+    const {name} = this._navigation?.getCurrentRoute() ?? {};
 
-    if (name === 'homePage' && !this.#isPressBack) {
-      this.#isPressBack = true;
+    if (name === 'homePage' && !this._isPressBack) {
+      this._isPressBack = true;
 
       Toast.show({
         text1: t('exit'),
@@ -105,12 +114,34 @@ class IndexPage extends React.Component {
         type: 'info',
       });
 
-      this.#timeout = setTimeout(() => (this.#isPressBack = false), 1000);
+      this._timeout = setTimeout(() => (this._isPressBack = false), 1000);
 
       return true;
     }
 
     return false;
+  };
+
+  _onToggleDrawer = () => {
+    this._navigation?.dispatch(DrawerActions.toggleDrawer());
+  };
+  _onChangeState = () => {
+    if (this._navigation) {
+      try {
+        const indexDrawerRoute =
+          this._navigation!.getRootState?.()?.routes?.findIndex?.(
+            el => el.name === 'drawerRoute',
+          );
+        const drawerRoute =
+          this._navigation!.getRootState?.()?.routes?.[indexDrawerRoute];
+
+        const isShowDrawer =
+          getDrawerStatusFromState(drawerRoute!.state as any) === 'open';
+        this._appBar?.current?.setConfigAppBar({isShowDrawer});
+      } catch (e) {
+        //ignore
+      }
+    }
   };
 }
 

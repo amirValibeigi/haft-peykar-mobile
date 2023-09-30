@@ -9,7 +9,9 @@ export interface AppBarState {
   isDark?: boolean;
   isDarkStatus?: boolean;
   isShowBack?: boolean;
+  isShowDrawer?: boolean;
   show?: boolean;
+  showDrawer?: boolean;
   showLogo?: boolean;
   title?: string;
 }
@@ -28,7 +30,9 @@ export const AppBarContextProvider = ({children}: any) => {
   const [state, setState] = React.useState<AppBarState>({
     color: Colors.primary,
     colorDark: Colors.primaryDark,
+    isShowDrawer: false,
     show: false,
+    showDrawer: true,
     showLogo: true,
     title: t('name_app'),
   });

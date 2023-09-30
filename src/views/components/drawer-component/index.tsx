@@ -21,51 +21,36 @@ import SVG_Telegram from '@assets/svg_telegram.svg';
 import SVG_Instagram from '@assets/svg_instagram.svg';
 import SVG_Castbox from '@assets/svg_castbox.svg';
 import SVG_Clubhouse from '@assets/svg_clubhouse.svg';
-import Toast from 'react-native-toast-message';
+import {useUI} from '@components/drawer-component/hooks';
 
-const DrawerComponent = (props: DrawerContentComponentProps) => {
+const DrawerComponentBase = React.memo((props: DrawerContentComponentProps) => {
   const navigation = props.navigation as any;
-
-  const {onPressHome, onPressDictionary, onPressBookmark, onPressNextVersion} =
-    React.useMemo(
-      () => ({
-        onPressBookmark: navigation.navigate.bind(null, 'bottomTabRoute', {
-          merge: true,
-          screen: 'homePage',
-        }),
-        onPressDictionary: navigation.navigate.bind(null, 'bottomTabRoute', {
-          merge: true,
-          screen: 'dictionaryPage',
-        }),
-        onPressHome: navigation.navigate.bind(null, 'bottomTabRoute', {
-          merge: true,
-          screen: 'homePage',
-        }),
-        onPressNextVersion: () => {
-          Toast.show({
-            text1: getString('activity'),
-            text2: getString('next_version'),
-            type: 'info',
-          });
-
-          navigation.closeDrawer();
-        },
-      }),
-      [navigation],
-    );
+  const {
+    focusRoute,
+    onPressPodcast,
+    onPressDictionary,
+    onPressHome,
+    onPressNextVersion,
+  } = useUI(navigation);
 
   return (
     <DrawerContentScrollView {...props} style={styles.container}>
-      <ButtonIcon icon={SVG_Dashboard} onPress={onPressHome}>
+      <ButtonIcon
+        icon={SVG_Dashboard}
+        select={focusRoute === 'homePage'}
+        onPress={onPressHome}>
         {getString('dashboard')}
       </ButtonIcon>
       <ButtonIcon icon={SVG_LampDesk} onPress={onPressNextVersion}>
         {getString('last_study')}
       </ButtonIcon>
-      <ButtonIcon icon={SVG_Bookmark} onPress={onPressBookmark}>
+      <ButtonIcon icon={SVG_Bookmark} onPress={onPressNextVersion}>
         {getString('bookmark')}
       </ButtonIcon>
-      <ButtonIcon icon={SVG_Dictionary} onPress={onPressDictionary}>
+      <ButtonIcon
+        icon={SVG_Dictionary}
+        select={focusRoute === 'dictionaryPage'}
+        onPress={onPressDictionary}>
         {getString('dictionary')}
       </ButtonIcon>
       <View style={styles.line} />
@@ -76,7 +61,10 @@ const DrawerComponent = (props: DrawerContentComponentProps) => {
       <ButtonIcon icon={SVG_Gallery} onPress={onPressNextVersion}>
         {getString('gallery')}
       </ButtonIcon>
-      <ButtonIcon icon={SVG_Podcast} onPress={onPressNextVersion}>
+      <ButtonIcon
+        icon={SVG_Podcast}
+        select={focusRoute === 'podcastPage'}
+        onPress={onPressPodcast}>
         {getString('podcast')}
       </ButtonIcon>
       <View style={styles.line} />
@@ -110,5 +98,9 @@ const DrawerComponent = (props: DrawerContentComponentProps) => {
       <View style={styles.line} />
     </DrawerContentScrollView>
   );
-};
+});
+const DrawerComponent = (props: DrawerContentComponentProps) => (
+  <DrawerComponentBase {...props} />
+);
+
 export default DrawerComponent;

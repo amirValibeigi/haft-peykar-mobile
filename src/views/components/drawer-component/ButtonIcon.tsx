@@ -5,13 +5,21 @@ import {styles} from '@components/drawer-component/Button.styles';
 
 export interface ButtonIconProp {
   children: string;
+  select?: boolean;
   icon: React.FC<SvgProps>;
   onPress: () => void;
 }
 
-const ButtonIcon = ({children, icon: Icon, onPress}: ButtonIconProp) => {
+const ButtonIcon = ({
+  children,
+  select,
+  icon: Icon,
+  onPress,
+}: ButtonIconProp) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.container, select && styles.containerSelect]}
+      onPress={onPress}>
       <View style={styles.content}>
         <View style={styles.lyIcon}>
           <Icon width="100%" height="100%" fill="white" />

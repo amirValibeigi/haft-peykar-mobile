@@ -10,10 +10,11 @@ import {styles} from './styles';
 interface AppBarViewProps {
   title?: string;
   onPressBack?: () => void;
+  onToggleDrawer?: () => void;
 }
 
 const AppBarView = React.forwardRef<AppBarViewRefType, AppBarViewProps>(
-  ({title: _title, onPressBack}: AppBarViewProps, ref) => {
+  ({title: _title, onPressBack, onToggleDrawer}: AppBarViewProps, ref) => {
     const {
       bgColor,
       color,
@@ -21,7 +22,9 @@ const AppBarView = React.forwardRef<AppBarViewRefType, AppBarViewProps>(
       isDark,
       isDarkStatus,
       isShowBack,
+      isShowDrawer,
       show,
+      showDrawer,
       showLogo,
       title,
     } = useHook(ref);
@@ -68,6 +71,14 @@ const AppBarView = React.forwardRef<AppBarViewRefType, AppBarViewProps>(
               style={styles.imageLogo}
               source={require('@assets/image_logo.png')}
               errorSource={require('@assets/image_logo.png')}
+            />
+          )}
+          {showDrawer && (
+            <Icon
+              name={isShowDrawer ? 'close' : 'menu'}
+              color={'#4c4c4c'}
+              size={25}
+              onPress={onToggleDrawer}
             />
           )}
         </Appbar>
